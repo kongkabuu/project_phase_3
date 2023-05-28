@@ -44,11 +44,11 @@ class Author
     end
   
     def article_titles
-      Article.all.select { |article| article.magazine == self }.map { |article| article.title }
+      Article.arr.select { |article| article.magazine == self }.map { |article| article.title }
     end
   
     def contributing_authors
-      Article.all.select { |article| article.magazine == self }
+      Article.arr.select { |article| article.magazine == self }
                   .group_by { |article| article.author }
                   .select { |author, articles| articles.length > 2 }
                   .keys
@@ -71,3 +71,24 @@ class Author
       @@arr
     end
   end
+  auth = Author.new("John Doe")
+  
+  
+  mag1 = Magazine.new("telemondo", "gyptic")
+  mag2 = Magazine.new("Mordern", "cars")
+
+
+
+  auth.add_article(mag1, "Andrew kibe")
+  auth.add_article(mag2, "muchene")
+ 
+  
+  puts auth.name
+  puts auth.articles.map { |article| article.title }
+  puts auth.magazines.map { |magazine| magazine.name }
+  puts auth.topic_areas
+  
+  puts magazine1.name
+  puts magazine1.category
+  puts magazine1.article_titles
+ 
