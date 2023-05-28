@@ -27,21 +27,20 @@ class Author
   
   class Magazine
     attr_accessor  :category, :name
-  
-    @@all = []
+    @@arr = []
   
     def initialize(name, category)
       @name = name
       @category = category
-      @@all << self
+      @@arr << self
     end
   
-    def self.all
-      @@all
+    def self.arr
+      @@arr
     end
   
     def self.find_by_name(name)
-      @@all.find { |magazine| magazine.name == name }
+      @@arr.find { |magazine| magazine.name == name }
     end
   
     def article_titles
@@ -59,16 +58,16 @@ class Author
   class Article
     attr_reader :author, :magazine, :title
   
-    @@all = []
+    @@arr = []
   
     def initialize(author, magazine, title)
       @author = author
       @magazine = magazine
       @title = title
-      @@all << self
+      @@arr << self
     end
   
-    def self.all
-      @@all
+    def self.arr
+      @@arr
     end
   end
